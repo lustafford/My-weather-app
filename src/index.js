@@ -68,6 +68,7 @@ let celsiusButton = document.querySelector("#celsius-switch");
 celsiusButton.addEventListener("click", celsiusDegrees);
 
 function currentWeather(response) {
+  console.log(response.data.main.temp_max);
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
   let temperature = Math.round(response.data.main.temp);
@@ -85,10 +86,10 @@ function currentWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `High ${currentHigh}°`;
+  high.innerHTML = `${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `Low ${currentLow}°`;
+  low.innerHTML = `${currentLow}°`;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -123,10 +124,10 @@ function locationWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `High ${currentHigh}°`;
+  high.innerHTML = `${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `Low ${currentLow}°`;
+  low.innerHTML = `${currentLow}°`;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;

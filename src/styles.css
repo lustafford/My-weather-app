@@ -13,7 +13,7 @@ h3 {
 h1 {
   padding: 20px 0;
   line-height: 15px;
-  font-size: 10px;
+  font-size: 20px;
   padding: 5px;
 }
 h2 {
@@ -48,7 +48,7 @@ hr {
   line-height: 25px;
 }
 .temperature {
-  font-size: 80px;
+  font-size: 40px;
 }
 .weather-details {
   font-size: 15px;

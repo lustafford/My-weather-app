@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/styles.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -15,6 +14,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+        <link rel="stylesheet" href="src/styles.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,8 +31,7 @@
     <div class="container">
       <div class="weather-box">
         <h1 id="date"></h1>
-
-        <h2 id="city-heading">search the weather</h2>
+<br>
 
         <form id="search-city">
           <label for="search-city">
@@ -47,17 +47,16 @@
           <input type="submit" value="Current Location" id="current-location" />
         </form>
         <br />
+        <h2 id="city-heading"></h2>
+
         <i class="fas fa-cloud-sun sun-cloud"></i>
         <h3 class="currently" id="current-description"><h3>
-        <h3 class="currently">Currently</h3>
-        <h3 class="temperature" id="today-temp"></h3>
 
-        <div class="row">
-          <div class="col-6" id="today-high">High 21°</div>
-          <div class="col-6" id="today-low">Low 11°</div>
-        </div>
+
+       <div><span class="today-high" id="today-high"></span> | <span class ="today-temp" id="today-temp"></span> | <span class ="today-low"id="today-low"><span> </div>
+
         <div class="col" id="feel-like">Feels like 22°</div>
-      </div>
+
 
         <br />
         <div class="weather-details">
