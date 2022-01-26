@@ -3,9 +3,9 @@ function fahrenheitDegrees(event) {
   let fahrenheitTemperature = document.querySelector("#today-temp");
   fahrenheitTemperature.innerHTML = `68°`;
   let fahrenheitHigh = document.querySelector("#today-high");
-  fahrenheitHigh.innerHTML = `High 70°`;
+  fahrenheitHigh.innerHTML = `70°`;
   let fahrenheitLow = document.querySelector("#today-low");
-  fahrenheitLow.innerHTML = `Low 52°`;
+  fahrenheitLow.innerHTML = `52°`;
   let fahrenheitFeel = document.querySelector("#feel-like");
   fahrenheitFeel.innerHTML = `Feels like 72°`;
 }
@@ -15,9 +15,9 @@ function celsiusDegrees(event) {
   let celsiusTemperature = document.querySelector("#today-temp");
   celsiusTemperature.innerHTML = `20°`;
   let celsiusHigh = document.querySelector("#today-high");
-  celsiusHigh.innerHTML = `High 21°`;
+  celsiusHigh.innerHTML = `21°`;
   let celsiusLow = document.querySelector("#today-low");
-  celsiusLow.innerHTML = `Low 11°`;
+  celsiusLow.innerHTML = `11°`;
   let celsiusFeel = document.querySelector("#feel-like");
   celsiusFeel.innerHTML = `Feels like 22°`;
 }

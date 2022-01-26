@@ -26,6 +26,10 @@ hr {
   display: block;
   border-top: 3px double #8c8b8b;
 }
+span {
+  font-size: 15px;
+  font-weight: lighter;
+}
 .container {
   border: 2px solid #dbd8d8;
   box-shadow: 9px 9px 5px #dbd8d8;
@@ -47,9 +51,22 @@ hr {
   font-size: 15px;
   line-height: 25px;
 }
-.temperature {
-  font-size: 40px;
+.high-low {
+  font-size: 15px;
+  font-weight: lighter;
 }
+#thermometer {
+  text-align: right;
+}
+.temperature {
+  font-size: 30px;
+  font-weight: bolder;
+}
+#feel-like {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
 .weather-details {
   font-size: 15px;
   text-decoration: none;
