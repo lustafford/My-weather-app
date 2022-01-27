@@ -86,10 +86,10 @@ function currentWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `${currentHigh}°`;
+  high.innerHTML = ` | ${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}°`;
+  low.innerHTML = `${currentLow}° | `;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -124,10 +124,10 @@ function locationWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `${currentHigh}°`;
+  high.innerHTML = ` | ${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}°`;
+  low.innerHTML = `${currentLow}° | `;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
