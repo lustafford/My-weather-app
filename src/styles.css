@@ -66,6 +66,14 @@ span {
   font-size: 15px;
   font-weight: lighter;
 }
+#humidity {
+  font-size: 15px;
+  font-weight: lighter;
+}
+#wind-speed {
+  font-size: 15px;
+  font-weight: lighter;
+}
 
 .weather-details {
   font-size: 15px;

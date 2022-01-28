@@ -113,7 +113,8 @@ function locationWeather(response) {
   let feelTemp = Math.round(response.data.main.feels_like);
   let currentHigh = Math.round(response.data.main.temp_max);
   let currentLow = Math.round(response.data.main.temp_min);
-
+  let humidity = Math.round(response.data.main.humidity);
+  let windSpeed = Math.round(response.data.wind.speed);
   let searchCityCountry = document.querySelector("#city-heading");
   searchCityCountry.innerHTML = `${cityResult}, ${resultCountry}`;
 
@@ -131,6 +132,11 @@ function locationWeather(response) {
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
+
+  let currentHumidity = document.querySelector("#humidity");
+  currentHumidity.innerHTML = `Humidity: ${humidity}%`;
+  let currentWindSpeed = document.querySelector("#wind-speed");
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}km/h`;
 }
 
 function showPosition(position) {
