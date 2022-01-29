@@ -1,27 +1,3 @@
-function fahrenheitDegrees(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = document.querySelector("#today-temp");
-  fahrenheitTemperature.innerHTML = `68°`;
-  let fahrenheitHigh = document.querySelector("#today-high");
-  fahrenheitHigh.innerHTML = `70°`;
-  let fahrenheitLow = document.querySelector("#today-low");
-  fahrenheitLow.innerHTML = `52°`;
-  let fahrenheitFeel = document.querySelector("#feel-like");
-  fahrenheitFeel.innerHTML = `Feels like 72°`;
-}
-
-function celsiusDegrees(event) {
-  event.preventDefault();
-  let celsiusTemperature = document.querySelector("#today-temp");
-  celsiusTemperature.innerHTML = `20°`;
-  let celsiusHigh = document.querySelector("#today-high");
-  celsiusHigh.innerHTML = `21°`;
-  let celsiusLow = document.querySelector("#today-low");
-  celsiusLow.innerHTML = `11°`;
-  let celsiusFeel = document.querySelector("#feel-like");
-  celsiusFeel.innerHTML = `Feels like 22°`;
-}
-
 let currentDate = new Date();
 let day = currentDate.getDay();
 let days = [
@@ -61,12 +37,6 @@ let h1 = document.querySelector("h1");
 
 h1.innerHTML = `${fullDay}, ${date} ${fullMonth}, ${hours}.${minutes}`;
 
-let fahrenheitButton = document.querySelector("#fahrenheit-switch");
-fahrenheitButton.addEventListener("click", fahrenheitDegrees);
-
-let celsiusButton = document.querySelector("#celsius-switch");
-celsiusButton.addEventListener("click", celsiusDegrees);
-
 function currentWeather(response) {
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
@@ -78,6 +48,11 @@ function currentWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let weatherIcon = document.querySelector("#icon");
 
+  degreesCelsius = Math.round(response.data.main.temp);
+  degreesHigh = Math.round(response.data.main.temp_max);
+  degreesLow = Math.round(response.data.main.temp_min);
+  degreesFeel = Math.round(response.data.main.feels_like);
+
   let searchCityCountry = document.querySelector("#city-heading");
   searchCityCountry.innerHTML = `${cityResult}, ${resultCountry}`;
 
@@ -88,10 +63,10 @@ function currentWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = ` | ${currentHigh}°`;
+  high.innerHTML = `${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}° | `;
+  low.innerHTML = `${currentLow}°`;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -119,7 +94,6 @@ let searchCity = document.querySelector("#search-city");
 searchCity.addEventListener("submit", search);
 
 function locationWeather(response) {
-  console.log(response.data.weather[0].icon);
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
   let temperature = Math.round(response.data.main.temp);
@@ -129,6 +103,12 @@ function locationWeather(response) {
   let humidity = Math.round(response.data.main.humidity);
   let windSpeed = Math.round(response.data.wind.speed);
   let weatherIcon = document.querySelector("#icon");
+
+  degreesCelsius = Math.round(response.data.main.temp);
+  degreesHigh = Math.round(response.data.main.temp_max);
+  degreesLow = Math.round(response.data.main.temp_min);
+  degreesFeel = Math.round(response.data.main.feels_like);
+
   let searchCityCountry = document.querySelector("#city-heading");
   searchCityCountry.innerHTML = `${cityResult}, ${resultCountry}`;
 
@@ -139,10 +119,10 @@ function locationWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = ` | ${currentHigh}°`;
+  high.innerHTML = `${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}° | `;
+  low.innerHTML = `${currentLow}°`;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -172,3 +152,49 @@ function currentPosition(event) {
 }
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", currentPosition);
+
+function fahrenheitDegrees(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (degreesCelsius * 9) / 5 + 32;
+  let currentFahrenheit = Math.round(fahrenheitTemperature);
+  let currentTemperature = document.querySelector("#today-temp");
+  currentTemperature.innerHTML = `${currentFahrenheit}°`;
+
+  let fahrenheitHigh = (degreesHigh * 9) / 5 + 32;
+  let fahHigh = Math.rounded(fahrenheitHigh);
+  let currentHigh = document.querySelector("#today-high");
+  currentHigh.innerHTML = ` | ${fahHigh}°`;
+
+  let fahrenheitLow = (degreesLow * 9) / 5 + 32;
+  let fahLow = Math.rounded(fahrenheitLow);
+  let currentLow = document.querySelector("#today-low");
+  currentLow.innerHTML = `${fahLow}° | `;
+
+  let fahrenheitFeel = (degreesFeel * 9) / 5 + 32;
+  let fahFeel = Math.round(fahrenheitFeel);
+  let currentFeel = document.querySelector("#feel-like");
+  currentFeel.innerHTML = `Feels like ${fahFeel}°`;
+}
+
+function celsiusDegrees(event) {
+  event.preventDefault();
+  let celsiusTemperature = document.querySelector("#today-temp");
+  celsiusTemperature.innerHTML = Math.round(degreesCelsius);
+  let celsiusHigh = document.querySelector("#today-high");
+  celsiusHigh.innerHTML = degreesHigh;
+  let celsiusLow = document.querySelector("#today-low");
+  celsiusLow.innerHTML = degreesLow;
+  let celsiusFeel = document.querySelector("#feel-like");
+  celsiusFeel.innerHTML = degreesFeel;
+}
+
+let degreesCelsius = null;
+let degreesHigh = null;
+let degreesLow = null;
+let degreesFeel = null;
+
+let fahrenheitButton = document.querySelector("#fahrenheit-switch");
+fahrenheitButton.addEventListener("click", fahrenheitDegrees);
+
+let celsiusButton = document.querySelector("#celsius-switch");
+celsiusButton.addEventListener("click", celsiusDegrees);
