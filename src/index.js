@@ -37,6 +37,11 @@ let h1 = document.querySelector("h1");
 
 h1.innerHTML = `${fullDay}, ${date} ${fullMonth}, ${hours}.${minutes}`;
 
+window.onload = function () {
+  locationWeather();
+  console.log("testing");
+};
+
 function currentWeather(response) {
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
@@ -89,9 +94,6 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(currentWeather);
 }
-
-let searchCity = document.querySelector("#search-city");
-searchCity.addEventListener("submit", search);
 
 function locationWeather(response) {
   let cityResult = response.data.name;
@@ -150,8 +152,6 @@ function currentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-let currentLocation = document.querySelector("#current-location");
-currentLocation.addEventListener("click", currentPosition);
 
 function fahrenheitDegrees(event) {
   event.preventDefault();
@@ -191,6 +191,11 @@ function celsiusDegrees(event) {
   let feelsLikeCelsius = document.querySelector("#feel-like");
   feelsLikeCelsius.innerHTML = `Feels like ${celsiusFeel}°`;
 }
+let searchCity = document.querySelector("#search-city");
+searchCity.addEventListener("submit", search);
+
+let currentLocation = document.querySelector("#current-location");
+currentLocation.addEventListener("click", currentPosition);
 
 let degreesCelsius = null;
 let degreesHigh = null;
