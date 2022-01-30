@@ -63,10 +63,10 @@ function currentWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `${currentHigh}°`;
+  high.innerHTML = ` | ${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}°`;
+  low.innerHTML = `${currentLow}° | `;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -119,10 +119,10 @@ function locationWeather(response) {
   feelLike.innerHTML = `Feels like ${feelTemp}°`;
 
   let high = document.querySelector("#today-high");
-  high.innerHTML = `${currentHigh}°`;
+  high.innerHTML = ` | ${currentHigh}°`;
 
   let low = document.querySelector("#today-low");
-  low.innerHTML = `${currentLow}°`;
+  low.innerHTML = `${currentLow}° | `;
 
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
@@ -161,12 +161,12 @@ function fahrenheitDegrees(event) {
   currentTemperature.innerHTML = `${currentFahrenheit}°`;
 
   let fahrenheitHigh = (degreesHigh * 9) / 5 + 32;
-  let fahHigh = Math.rounded(fahrenheitHigh);
+  let fahHigh = Math.round(fahrenheitHigh);
   let currentHigh = document.querySelector("#today-high");
   currentHigh.innerHTML = ` | ${fahHigh}°`;
 
   let fahrenheitLow = (degreesLow * 9) / 5 + 32;
-  let fahLow = Math.rounded(fahrenheitLow);
+  let fahLow = Math.round(fahrenheitLow);
   let currentLow = document.querySelector("#today-low");
   currentLow.innerHTML = `${fahLow}° | `;
 
@@ -178,14 +178,18 @@ function fahrenheitDegrees(event) {
 
 function celsiusDegrees(event) {
   event.preventDefault();
-  let celsiusTemperature = document.querySelector("#today-temp");
-  celsiusTemperature.innerHTML = Math.round(degreesCelsius);
-  let celsiusHigh = document.querySelector("#today-high");
-  celsiusHigh.innerHTML = degreesHigh;
-  let celsiusLow = document.querySelector("#today-low");
-  celsiusLow.innerHTML = degreesLow;
-  let celsiusFeel = document.querySelector("#feel-like");
-  celsiusFeel.innerHTML = degreesFeel;
+  let celsiusTemperature = Math.round(degreesCelsius);
+  let currentCelsius = document.querySelector("#today-temp");
+  currentCelsius.innerHTML = `${celsiusTemperature}°`;
+  let celsiusHigh = Math.round(degreesHigh);
+  let topCelsius = document.querySelector("#today-high");
+  topCelsius.innerHTML = ` | ${celsiusHigh}°`;
+  let celsiusLow = Math.round(degreesLow);
+  let bottomCelsius = document.querySelector("#today-low");
+  bottomCelsius.innerHTML = `${celsiusLow}° | `;
+  let celsiusFeel = Math.round(degreesFeel);
+  let feelsLikeCelsius = document.querySelector("#feel-like");
+  feelsLikeCelsius.innerHTML = `Feels like ${celsiusFeel}°`;
 }
 
 let degreesCelsius = null;
