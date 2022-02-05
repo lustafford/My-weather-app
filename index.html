@@ -29,10 +29,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
   </head>
   <body>
-    <div class="container">
-      <div class="weather-box">
+  <div class="container">
+    <div class="weather-box">
         <h1 id="date"></h1>
-<br>
+          <br />
 
         <form id="search-city">
           <label for="search-city">
@@ -50,21 +50,17 @@
         <br />
         <h2 id="city-heading"></h2>
 
-<img src= "http://openweathermap.org/img/wn/01n@2x.png";
-" alt="weather icon" id="icon">
+        <img src= "http://openweathermap.org/img/wn/01n@2x.png";
+             alt="weather icon" id="icon">
 
-<h3 class="currently" id="current-description"><h3>
+          <h3 class="currently" id="current-description"><h3>
 
-<div class="row">
-      <div class="col-4" id="thermometer"></div>
-      <div class="col-4"><span class="high-low" id="today-low"></span><span class ="temperature" id="today-temp"> </span><span class ="high-low" id="today-high"> </span> </div>
-      <div class="col-4"></div>
-      
-
-
-</div>
-       <div></div>
-<br>
+        <div class="row">
+          <div class="col-4" id="thermometer"></div>
+          <div class="col-4"><span class="high-low" id="today-low"></span><span class ="temperature" id="today-temp"> </span><span class ="high-low" id="today-high"> </span> </div>
+          <div class="col-4"></div>
+        </div>
+        <br />
         <div class="col" id="feel-like"></div>
         <div class="col" id="humidity"></div>
         <div class="col" id="wind-speed"></div>
@@ -74,46 +70,34 @@
           <div class="col" align="center">
             <a href="#" id="celsius-switch"> °C </a> |
             <a href="#" id="fahrenheit-switch"> °F </a>
-          </div>
+         </div>
+        </div>
+
 
         <br />
         <hr align="center" />
         <br />
-        <div class="row">
-          <div class="col">Su</div>
-          <div class="col">M</div>
-          <div class="col">T</div>
-          <div class="col">W</div>
-          <div class="col">Th</div>
-        </div>
-        <div class="row">
-          <div class="col">11°</div>
-          <div class="col">13°</div>
-          <div class="col">15°</div>
-          <div class="col">14°</div>
-          <div class="col">11°</div>
-        </div>
-        <div class="row">
-          <div class="col">25°</div>
-          <div class="col">32°</div>
-          <div class="col">22°</div>
-          <div class="col">21°</div>
-          <div class="col">21°</div>
-        </div>
-      </div>
-      <br />
-      <br />
-
+        <div class="forecast">
+          <div class="row">
+            <div class="col-2">
+              <div class ="forecast-date">Tue</div>
+              <br />
+              <div>21° | 32°</div>
+            </div>
+          </div>
+       </div>  
       <br />
       <br />
     </div>
+  </div>
+      <br />
+      <br />
+
     <div class=git-hub-link>
           <a href="https://github.com/lustafford/My-weather-app" target="blank">Open-source code</a>
-<span> by Lucy Stafford</span></div>
-    <br />
-    <br />
+      <span> by Lucy Stafford</span></div>
     
-    <script src="src/index.js">
-    </script>
-  </body>
+<script src="src/index.js">
+</script>
+</body>
 </html>

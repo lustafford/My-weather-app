@@ -89,4 +89,9 @@ span {
   display: block;
   margin: 0 auto;
   text-align: center;
+  font-size: small;
+}
+.forecast {
+  font-size: 15px;
+  font-weight: lighter;
 }

@@ -37,11 +37,6 @@ let h1 = document.querySelector("h1");
 
 h1.innerHTML = `${fullDay}, ${date} ${fullMonth}, ${hours}.${minutes}`;
 
-window.onload = function () {
-  locationWeather();
-  console.log("testing");
-};
-
 function currentWeather(response) {
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
