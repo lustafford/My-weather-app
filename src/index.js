@@ -37,6 +37,28 @@ let h1 = document.querySelector("h1");
 
 h1.innerHTML = `${fullDay}, ${date} ${fullMonth}, ${hours}.${minutes}`;
 
+function displayForecast() {
+  let weeklyForecast = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Su", "Mo", "Tu", "We", "Th", "Fr"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2">
+              <div class ="forecast-date">${day}</div>
+              <br />
+              <div class = "forecast-temperatures" >
+                <span class = "forecast-min">21°</span> | 
+                <span class="forcast-max">32°</span></div>
+         </div>
+       `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  weeklyForecast.innerHTML = forecastHTML;
+}
+
 function currentWeather(response) {
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
@@ -202,3 +224,5 @@ fahrenheitButton.addEventListener("click", fahrenheitDegrees);
 
 let celsiusButton = document.querySelector("#celsius-switch");
 celsiusButton.addEventListener("click", celsiusDegrees);
+
+displayForecast();
