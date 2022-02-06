@@ -46,21 +46,25 @@ function formatDate(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let dailyForecast = response.data.daily;
   let weeklyForecast = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  dailyForecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7)
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-2">
               <div class ="forecast-date">${formatDate(forecastDay.dt)}</div>
               <br />
               <div class = "forecast-temperatures" >
-                <span class = "forecast-min">${forecastDay.temp.max}°</span> | 
-                <span class="forcast-max">${forecastDay.temp.min}°</span></div>
+                <span class = "forecast-min">${Math.round(
+                  forecastDay.temp.max
+                )}°</span> | 
+                <span class="forcast-max">${Math.round(
+                  forecastDay.temp.min
+                )}°</span></div>
          </div>
        `;
   });
@@ -128,6 +132,12 @@ function search(event) {
   axios.get(apiUrl).then(currentWeather);
 }
 
+function currentPositionForecast(coordinates) {
+  let apiKey = `8d6db36656a595a8f0c6f5ee19440b24`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function locationWeather(response) {
   let cityResult = response.data.name;
   let resultCountry = response.data.sys.country;
@@ -171,6 +181,7 @@ function locationWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  currentPositionForecast(response.data.coord);
 }
 
 function showPosition(position) {
