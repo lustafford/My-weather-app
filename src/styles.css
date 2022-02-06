@@ -79,12 +79,7 @@ span {
   font-size: 15px;
   text-decoration: none;
 }
-.celsius-switch {
-  margin: 0 auto;
-  position: absolute;
-  left: 50%;
-  right: 50%;
-}
+
 .git-hub-link {
   display: block;
   margin: 0 auto;
