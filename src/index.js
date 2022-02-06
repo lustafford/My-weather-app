@@ -37,26 +37,41 @@ let h1 = document.querySelector("h1");
 
 h1.innerHTML = `${fullDay}, ${date} ${fullMonth}, ${hours}.${minutes}`;
 
-function displayForecast() {
+function formatDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+  let dailyForecast = response.data.daily;
   let weeklyForecast = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Su", "Mo", "Tu", "We", "Th", "Fr"];
-  days.forEach(function (day) {
+  dailyForecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
           <div class="col-2">
-              <div class ="forecast-date">${day}</div>
+              <div class ="forecast-date">${formatDate(forecastDay.dt)}</div>
               <br />
               <div class = "forecast-temperatures" >
-                <span class = "forecast-min">21°</span> | 
-                <span class="forcast-max">32°</span></div>
+                <span class = "forecast-min">${forecastDay.temp.max}°</span> | 
+                <span class="forcast-max">${forecastDay.temp.min}°</span></div>
          </div>
        `;
   });
   forecastHTML = forecastHTML + `</div>`;
   weeklyForecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = `8d6db36656a595a8f0c6f5ee19440b24`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function currentWeather(response) {
@@ -102,6 +117,7 @@ function currentWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function search(event) {
@@ -224,5 +240,3 @@ fahrenheitButton.addEventListener("click", fahrenheitDegrees);
 
 let celsiusButton = document.querySelector("#celsius-switch");
 celsiusButton.addEventListener("click", celsiusDegrees);
-
-displayForecast();
