@@ -197,57 +197,8 @@ function currentPosition(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-function fahrenheitDegrees(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (degreesCelsius * 9) / 5 + 32;
-  let currentFahrenheit = Math.round(fahrenheitTemperature);
-  let currentTemperature = document.querySelector("#today-temp");
-  currentTemperature.innerHTML = `${currentFahrenheit}°`;
-
-  let fahrenheitHigh = (degreesHigh * 9) / 5 + 32;
-  let fahHigh = Math.round(fahrenheitHigh);
-  let currentHigh = document.querySelector("#today-high");
-  currentHigh.innerHTML = ` | ${fahHigh}°`;
-
-  let fahrenheitLow = (degreesLow * 9) / 5 + 32;
-  let fahLow = Math.round(fahrenheitLow);
-  let currentLow = document.querySelector("#today-low");
-  currentLow.innerHTML = `${fahLow}° | `;
-
-  let fahrenheitFeel = (degreesFeel * 9) / 5 + 32;
-  let fahFeel = Math.round(fahrenheitFeel);
-  let currentFeel = document.querySelector("#feel-like");
-  currentFeel.innerHTML = `Feels like ${fahFeel}°`;
-}
-
-function celsiusDegrees(event) {
-  event.preventDefault();
-  let celsiusTemperature = Math.round(degreesCelsius);
-  let currentCelsius = document.querySelector("#today-temp");
-  currentCelsius.innerHTML = `${celsiusTemperature}°`;
-  let celsiusHigh = Math.round(degreesHigh);
-  let topCelsius = document.querySelector("#today-high");
-  topCelsius.innerHTML = ` | ${celsiusHigh}°`;
-  let celsiusLow = Math.round(degreesLow);
-  let bottomCelsius = document.querySelector("#today-low");
-  bottomCelsius.innerHTML = `${celsiusLow}° | `;
-  let celsiusFeel = Math.round(degreesFeel);
-  let feelsLikeCelsius = document.querySelector("#feel-like");
-  feelsLikeCelsius.innerHTML = `Feels like ${celsiusFeel}°`;
-}
 let searchCity = document.querySelector("#search-city");
 searchCity.addEventListener("submit", search);
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", currentPosition);
-
-let degreesCelsius = null;
-let degreesHigh = null;
-let degreesLow = null;
-let degreesFeel = null;
-
-let fahrenheitButton = document.querySelector("#fahrenheit-switch");
-fahrenheitButton.addEventListener("click", fahrenheitDegrees);
-
-let celsiusButton = document.querySelector("#celsius-switch");
-celsiusButton.addEventListener("click", celsiusDegrees);
